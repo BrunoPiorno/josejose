@@ -1,0 +1,139 @@
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 9998;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.popup-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    z-index: 10000;
+}
+
+/* Ensure header and footer stay above */
+
+
+.popup-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+.modal {
+    background: #FFF;
+    -webkit-box-shadow: 0 2px 5px rgba(18, 17, 17, 0.38);
+    box-shadow: 0 2px 5px rgba(18, 17, 17, 0.38);
+    margin: auto;
+    width: 75vw;
+    height: 70dvh;
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+
+
+.intro-block-left,
+.intro-block-right {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	box-sizing: border-box;
+    height: 100%;
+    position: relative;
+}
+.intro-block-left img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+	box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+	animation: fadeSlideLeft 1s ease-out forwards;
+}
+
+.intro-block-image img {
+    filter: invert(1);
+    height: 120px;   
+}
+
+.intro-block-right {
+	flex-direction: column;
+	text-align: left;
+	animation: fadeSlideRight 1s ease-out forwards;
+    padding: 40px;
+}
+
+.intro-block-right h1 {
+	font-size: 2.8rem;
+	margin: 0;
+}
+
+.intro-block-right h2 {
+	font-size: 24px;
+	font-weight: normal;
+	color: #91AEC4;
+	margin: 0;
+}
+
+.intro-block-right p {
+	font-size: 16px;
+	line-height: 1.8;
+    margin-top: 0;
+	margin-bottom: 10px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+@keyframes fadeSlideLeft {
+	from { opacity: 0; transform: translateX(-30px); }
+	to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeSlideRight {
+	from { opacity: 0; transform: translateX(30px); }
+	to { opacity: 1; transform: translateX(0); }
+}
+
+
+@media (max-width: 1440px) {
+    .modal {
+        width: 70vw;
+    }
+    .intro-block-right {
+        padding: 0 20px;
+    }
+    .intro-block-image img {
+        height: 80px;
+    }
+
+    .intro-block-right h2 {
+        font-size: 20px;
+    }
+    .button {
+        font-size: 16px;
+    }
+    .site-logo {
+        height: 80px;
+    }
+}
