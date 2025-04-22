@@ -1,9 +1,0 @@
-[10-Apr-2025 11:46:05 UTC] PHP Warning:  Undefined variable $image in /Users/bruno/Local Sites/sonymap/app/public/wp-content/themes/mapsony/footer.php on line 32
-[15-Apr-2025 19:12:58 UTC] PHP Warning:  Undefined array key "lat" in /Users/bruno/Local Sites/sonymap/app/public/wp-content/themes/mapsony/functions.php on line 275
-[15-Apr-2025 19:12:58 UTC] PHP Warning:  Undefined array key "lng" in /Users/bruno/Local Sites/sonymap/app/public/wp-content/themes/mapsony/functions.php on line 276
-[15-Apr-2025 19:13:15 UTC] PHP Warning:  Undefined array key "lat" in /Users/bruno/Local Sites/sonymap/app/public/wp-content/themes/mapsony/functions.php on line 275
-[15-Apr-2025 19:13:15 UTC] PHP Warning:  Undefined array key "lng" in /Users/bruno/Local Sites/sonymap/app/public/wp-content/themes/mapsony/functions.php on line 276
-[15-Apr-2025 19:14:07 UTC] PHP Warning:  Undefined array key "lat" in /Users/bruno/Local Sites/sonymap/app/public/wp-content/themes/mapsony/functions.php on line 275
-[15-Apr-2025 19:14:07 UTC] PHP Warning:  Undefined array key "lng" in /Users/bruno/Local Sites/sonymap/app/public/wp-content/themes/mapsony/functions.php on line 276
-[15-Apr-2025 19:15:27 UTC] PHP Warning:  Undefined array key "lat" in /Users/bruno/Local Sites/sonymap/app/public/wp-content/themes/mapsony/functions.php on line 275
-[15-Apr-2025 19:15:27 UTC] PHP Warning:  Undefined array key "lng" in /Users/bruno/Local Sites/sonymap/app/public/wp-content/themes/mapsony/functions.php on line 276
