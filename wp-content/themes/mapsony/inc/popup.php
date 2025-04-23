@@ -9,8 +9,11 @@ $logo = get_field('header_logo', 'option');
 <div class="blur-overlay"></div>
 <div id="intro-popup" class="popup-overlay">
 	<div class="modal">	
-		<div class="intro-block-left">
+		<div class="intro-block-left desktop-image">
 			<?php get_template_part('inc/image', null, ['image' => get_field('image', 'option')]); ?>
+		</div>
+		<div class="intro-block-left mobile-image">
+			<?php get_template_part('inc/image', null, ['image' => get_field('image_mobile', 'option')]); ?>
 		</div>
 		<div class="intro-block-right">
 			<div class="intro-block-image">

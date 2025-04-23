@@ -374,11 +374,69 @@ document.addEventListener('DOMContentLoaded', function () {
             if (shareButton.classList.contains('download-memory')) {
                 const memoryId = shareButton.dataset.id;
                 const popup = shareButton.closest('.leaflet-popup-content');
+                
                 if(popup) {
-                    html2canvas(popup).then(canvas => {
+                    // Crear una copia del popup sin los botones sociales y flechas
+                    const cleanPopup = popup.cloneNode(true);
+                    const socialButtons = cleanPopup.querySelector('.memory-social');
+                    const navButtons = cleanPopup.querySelectorAll('.nav-button');
+                    
+                    if (socialButtons) {
+                        socialButtons.remove();
+                    }
+                    navButtons.forEach(button => button.remove());
+                    
+                    // Crear un contenedor temporal para el popup limpio
+                    const tempContainer = document.createElement('div');
+                    tempContainer.style.position = 'absolute';
+                    tempContainer.style.left = '-9999px';
+                    tempContainer.appendChild(cleanPopup);
+                    document.body.appendChild(tempContainer);
+                    
+                    // Capturar la versión limpia
+                    html2canvas(cleanPopup).then(popupCanvas => {
+                        // Eliminar el contenedor temporal
+                        document.body.removeChild(tempContainer);
+                        
+                        const finalCanvas = document.createElement('canvas');
+                        const ctx = finalCanvas.getContext('2d');
+                        
+                        finalCanvas.width = 800;
+                        finalCanvas.height = 600;
+                        
+                        const gradient = ctx.createLinearGradient(0, 0, 0, finalCanvas.height);
+                        gradient.addColorStop(0, '#194569');
+                        gradient.addColorStop(1, '#5F84A2');
+                        ctx.fillStyle = gradient;
+                        ctx.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
+                        
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+                        for(let i = 0; i < finalCanvas.width; i += 40) {
+                            for(let j = 0; j < finalCanvas.height; j += 40) {
+                                ctx.fillRect(i, j, 20, 20);
+                            }
+                        }
+                        
+                        const x = (finalCanvas.width - popupCanvas.width) / 2;
+                        const y = (finalCanvas.height - popupCanvas.height) / 2;
+                        
+                        ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
+                        ctx.shadowBlur = 20;
+                        ctx.shadowOffsetX = 0;
+                        ctx.shadowOffsetY = 10;
+                        
+                        ctx.drawImage(popupCanvas, x, y);
+                        
+                        ctx.shadowBlur = 0;
+                        ctx.shadowOffsetY = 0;
+                        ctx.font = 'bold 24px Arial';
+                        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+                        ctx.textAlign = 'center';
+                        ctx.fillText('JOSÉ JOSÉ', finalCanvas.width / 2, 50);
+                        
                         const link = document.createElement('a');
-                        link.download = `memory-${memoryId}.png`;
-                        link.href = canvas.toDataURL();
+                        link.download = `josejose.png`;
+                        link.href = finalCanvas.toDataURL('image/png');
                         link.click();
                     });
                 }

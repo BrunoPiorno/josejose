@@ -1569,9 +1569,6 @@ body, html {
     font-size: 0.9rem;
 }
 
-.nav-button:hover {
-    background: #4A6B89;
-}
 
 .nav-button:disabled {
     background: #ccc;
@@ -1646,20 +1643,9 @@ body, html {
     justify-content: center;
 }
 
-.nav-button:hover {
-    color: #5F84A2;
-}
-
 .nav-button i {
     font-size: 16px;
 }
-
-.memory-social {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
 
 .social-button:hover {
     background: #5F84A2;
@@ -1709,6 +1695,7 @@ body, html {
 .nav-button:hover {
     background: #5F84A2;
     transform: scale(1.1);
+    color: #fff;
 }
 
 .nav-button i {
@@ -1717,17 +1704,14 @@ body, html {
 
 .memory-social {
     display: flex;
-    gap: 10px;
+    gap: 0;
     justify-content: center;
 }
 
 .social-button {
-    background: #194569;
-    color: white;
+    background: transparent;
+    color: #194569;
     border: none;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1738,8 +1722,20 @@ body, html {
 .social-button:hover {
     background: #5F84A2;
     transform: scale(1.1);
+    color: #fff;
 }
 
 .social-button i {
     font-size: 14px;
+}
+
+
+@keyframes bounceDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(20px); }
+}
+
+.download-overlay.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
 }

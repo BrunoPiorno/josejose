@@ -115,6 +115,10 @@
 	to { opacity: 1; transform: translateX(0); }
 }
 
+/* Desktop/Mobile image handling */
+.intro-block-left.mobile-image {
+    display: none;
+}
 
 @media (max-width: 1440px) {
     .modal {
@@ -136,4 +140,50 @@
     .site-logo {
         height: 80px;
     }
+}
+
+@media (max-width: 768px) {
+    .modal {
+        width: 96vw;
+    }
+    .intro-block-right h2 {
+        font-size: 18px;
+    }
+    .button {
+        font-size: 14px;
+    }
+}
+@media (max-width: 600px) { 
+    .modal {
+        grid-template-columns: 1fr;
+        height: auto; /* Asegura que crezca según contenido */
+    }
+
+    .intro-block-left, 
+    .intro-block-right {
+        width: 100%;
+        height: auto; /* O por ejemplo, height: 50vh si querés un tamaño fijo */
+    }
+
+    .intro-block-right {
+        margin-bottom: 20px;
+    }
+
+    .intro-block-left img {
+        position: relative;
+        height: auto;
+        max-height: 300px; /* Ajusta según diseño */
+    }
+    .intro-block-left.desktop-image {
+        display: none;
+    }
+    
+    .intro-block-left.mobile-image {
+        display: block;
+    }
+
+    .button {
+        padding: 15px 20px;
+    }
+    
 }

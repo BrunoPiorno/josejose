@@ -73,6 +73,13 @@ body {
     object-fit: contain;
 }
 
+
+@media (max-width: 900px) {
+    .footer-links li {
+        margin: 0 5px;
+    }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .footer-container {
@@ -87,6 +94,13 @@ body {
     }
 
     .footer-logos {
-        margin: 10px 0;
+        margin: 0 20px;
     }
+    .footer-links ul {flex-direction: column;}
+    .footer-links li {margin: 0;}
+
+    .site-footer {
+        padding: 10px 0;
+    }
+    #add-memory-btn {bottom: 22%;    padding: 10px 20px; font-size: 14px; }
 }
