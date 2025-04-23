@@ -1672,13 +1672,6 @@ body, html {
     line-height: 1.6;
 }
 
-.memory-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-}
-
 .nav-button {
     color: #194569;
     border: none;
