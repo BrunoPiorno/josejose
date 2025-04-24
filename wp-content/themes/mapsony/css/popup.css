@@ -86,10 +86,14 @@
 }
 
 .intro-block-right h2 {
-	font-size: 24px;
-	font-weight: normal;
-	color: #91AEC4;
+	font-size: 22px;
+    color: #333333;
+    font-weight: 400;
 	margin: 0;
+}
+
+.intro-block-description {
+    text-align: center;
 }
 
 .intro-block-right p {
@@ -99,6 +103,9 @@
 	margin-bottom: 10px;
 }
 
+.memory-popup   .leaflet-popup-content {
+    width: 100% !important;
+}
 /* Animaciones */
 @keyframes fadeIn {
 	from { opacity: 0; }

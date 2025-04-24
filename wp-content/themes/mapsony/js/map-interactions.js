@@ -203,18 +203,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                 tempMarker.bindPopup(`
                                     <div class="memory-form">
-                                        <h3>Leave your memory in ${clickedCountry}</h3>
-                                        <input type="text" class="memory-screenname" placeholder="Screen name (this will be displayed next to your memory)">
-                                        <textarea class="memory-content" placeholder="Type your memory here..."></textarea>
+                                        <h3>Deja tu recuerdo en  ${clickedCountry}</h3>
+                                        <input type="text" class="memory-screenname" placeholder="Nombre (así aparecerás en el mapa)">
+                                        <textarea class="memory-content" placeholder="Escribe tu recuerdo"></textarea>
                                         <div class="memory-footer">
-                                            <p>By submitting a memory, you agree to the Terms & Conditions</p>
+                                            <p>Al enviar un recuerdo, aceptas los <a href="/terminos-y-condiciones" target="_blank">Términos y condiciones</a></p>
                                             <div class="memory-buttons">
-                                                <button class="memory-back">Back</button>
-                                                <button class="memory-submit">Next</button>
+                                                <button class="memory-back">Atrás</button>
+                                                <button class="memory-submit">Siguiente</button>
                                             </div>
                                         </div>
                                     </div>
-                                `, popupOptions).openPopup();
+                                `, {
+                                    closeButton: true,
+                                    closeOnClick: false,
+                                    autoClose: false,
+                                    className: 'memory-popup'
+                                }).openPopup();
                             }
                         });
                     }
@@ -239,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
     memoryInstructions.style.display = 'none';
     memoryInstructions.innerHTML = `
         <div class="instructions-content">
-            <p>Click on a highlighted country to leave your memory</p>
+            <p>Haz clic en un país resaltado</p>
         </div>
     `;
     document.querySelector('#map').appendChild(memoryInstructions);
@@ -254,11 +259,11 @@ document.addEventListener('DOMContentLoaded', function () {
         addMemoryMode = !addMemoryMode;
         
         if (addMemoryMode) {
-            addMemoryBtn.innerHTML = '<i class="fas fa-times"></i> Cancel';
+            addMemoryBtn.innerHTML = '<i class="fas fa-times"></i> Salir';
             addMemoryBtn.classList.add('active');
             memoryInstructions.style.display = 'block';
         } else {
-            addMemoryBtn.innerHTML = '<i class="fas fa-plus"></i> Add a Memory';
+            addMemoryBtn.innerHTML = '<i class="fas fa-plus"></i> Agrega tu recuerdo';
             addMemoryBtn.classList.remove('active');
             memoryInstructions.style.display = 'none';
             if (tempMarker) {

@@ -986,7 +986,7 @@ textarea {
 	background-color: #194569;
 	color: #fff;
 	border: none;
-	border-radius: 5px;
+	border-radius: 20px;
 	padding: 20px;
 	font-size: 18px;
 	font-weight: 600;
@@ -997,7 +997,6 @@ textarea {
 	background-color: #5F84A2;
 	color: #fff;
 	border: none;
-	border-radius: 5px;
 	padding: 20px;
 	font-weight: 600;
 }
@@ -1607,10 +1606,6 @@ body, html {
     font-size: 16px;
 }
 
-/* Memory Popup Styles */
-.memory-popup {
-    padding: 15px;
-}
 
 .memory-popup h3 {
     margin: 0 0 15px 0;
@@ -1654,17 +1649,6 @@ body, html {
 
 .social-button i {
     font-size: 14px;
-}
-
-.memory-popup {
-    padding: 15px;
-}
-
-.memory-popup h3 {
-    margin: 0 0 15px 0;
-    color: #194569;
-    font-size: 1.2rem;
-    text-align: center;
 }
 
 .memory-text {
@@ -1742,4 +1726,110 @@ body, html {
 .download-overlay.fade-out {
     opacity: 0;
     transition: opacity 0.5s ease-out;
+}
+
+/* Estilos para el texto del mapa */
+.map-instruction {
+    position: absolute;
+    top: 140px; /* Ajustado para estar debajo del logo */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    font-size: 18px;
+    color: #333333;
+    font-weight: 600;
+    text-align: center;
+    pointer-events: none;
+    width: auto;
+    white-space: nowrap;
+}
+
+/* Estilo para mensajes de error en el mapa */
+.error-popup {
+    margin-top: 100px; /* Separación del texto de instrucción */
+}
+
+/* Estilos para el popup de memoria */
+.memory-form {
+    width: 400px !important;
+    padding: 20px !important;
+}
+
+.memory-form h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.memory-form input,
+.memory-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.memory-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.memory-footer {
+    margin-top: 20px;
+}
+
+.memory-footer p {
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #666;
+}
+
+.memory-footer p a {
+    color: #194569;
+    text-decoration: underline;
+}
+
+.memory-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.memory-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.memory-back {
+    background-color: #666 !important;
+    color: white !important;
+}
+
+.memory-submit {
+    background-color: #194569 !important;
+    color: white !important;
+}
+
+.memory-back:hover {
+    background-color: #555 !important;
+}
+
+.memory-submit:hover {
+    background-color: #0d2b42 !important;
+}
+/* Ajuste del tamaño del popup de Leaflet */
+.leaflet-popup-content {
+    margin: 0 !important;
+   padding: 20px;
+}
+
+.leaflet-popup-content-wrapper {
+    padding: 0 !important;
+    border-radius: 8px !important;
 }

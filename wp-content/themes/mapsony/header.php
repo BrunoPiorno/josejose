@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-	<link rel="icon" type="image/x-icon" href="<?php echo get_template_directory_uri(); ?>/images/Jose_Jose_Logo.ico">
+	<link rel="icon" type="image/x-icon" href="<?php echo get_template_directory_uri(); ?>/images/me-gusta.png">
 	<?php wp_head(); ?>
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>

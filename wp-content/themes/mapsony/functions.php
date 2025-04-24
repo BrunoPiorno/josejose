@@ -162,7 +162,8 @@ function mapsony_scripts() {
         'nonce' => wp_create_nonce('wp_rest'),
         'site_url' => get_site_url(),
         'popup_message' => get_field('popup_message', 'option'),
-        'pin_icon' => get_field('pin_icon', 'option')['url'] ?? '' // Obtener la URL de la imagen
+        'pin_icon' => get_field('pin_icon', 'option')['url'] ?? '', // Obtener la URL de la imagen
+        'subscription_form_html' => do_shortcode('[contact-form-7 id="bbf3b31" title="Newsletter Subscription"]')
     ));
 
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
