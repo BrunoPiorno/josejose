@@ -20,45 +20,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Modal Functionality
-    const popup = document.getElementById('intro-popup');
-    const closeBtn = document.getElementById('close-popup');
-    
-    if (popup && closeBtn) {
+    // Modal Intro Popup
+    const introPopup = document.getElementById('intro-popup');
+    if (introPopup && closePopupBtn) {
         setTimeout(() => {
-            popup.style.display = 'flex';
+            introPopup.style.display = 'flex';
         }, 500);
-        
-        closeBtn.addEventListener('click', () => {
-            popup.style.display = 'none';
+        closePopupBtn.addEventListener('click', () => {
+            introPopup.style.display = 'none';
         });
     }
 
     // Memory Popup Functionality
-    const submitButton = document.querySelector(".memory-submit");
-    const memoryPopup = document.getElementById("popup-memory-form");
-    const closeMemoryPopup = memoryPopup ? memoryPopup.querySelector(".close-popup") : null;
+    const memoryPopup = document.getElementById('popup-memory-form');
 
-    // Delegación de eventos: Escuchamos el click en el documento
+    // Abrir el popup al hacer click en .memory-submit
     document.addEventListener("click", function(event) {
-        // Verifica si el botón .memory-submit ha sido clickeado
         if (event.target && event.target.classList.contains("memory-submit")) {
-            event.preventDefault(); // Prevenir la acción por defecto si es necesario
-            memoryPopup.style.display = "flex"; // Muestra el popup
+            event.preventDefault();
+            if (memoryPopup) {
+                memoryPopup.style.display = "flex";
+            }
         }
     });
 
-    // Cierra el popup cuando se hace clic en la 'X'
-    if (closeMemoryPopup) {
-        closeMemoryPopup.addEventListener("click", function() {
-            memoryPopup.style.display = "none"; // Oculta el popup
+    // Cerrar popups (en general) cuando se clickea la X
+    document.querySelectorAll('.close-popup').forEach(function (el) {
+        el.addEventListener('click', function () {
+            const popupContainer = this.closest('.popup-content')?.parentElement;
+            if (popupContainer) {
+                popupContainer.style.display = 'none';
+            }
         });
-    }
+    });
 
-    // Cierra el popup si el usuario hace clic fuera del contenido del popup
+    // Cierra el memory popup si clickean afuera
     window.addEventListener("click", function(event) {
         if (event.target === memoryPopup) {
-            memoryPopup.style.display = "none"; // Oculta el popup
+            memoryPopup.style.display = "none";
         }
     });
+
+    // Al enviar el formulario de Memory
+    document.addEventListener('wpcf7submit', function (event) {
+        console.log('Formulario enviado:', event.detail);
+        if (event.detail.status === 'mail_sent') {
+            // Ocultar el popup del formulario
+            const memoryPopup = document.getElementById('popup-memory-form');
+            if (memoryPopup) {
+                memoryPopup.style.display = 'none';
+            }
+            
+            // Mostrar el popup de agradecimiento
+            const thankYouPopup = document.getElementById('popup-thank-you');
+            if (thankYouPopup) {
+                thankYouPopup.style.display = 'flex';
+            } else {
+                console.error('No se encontró el popup-thank-you');
+            }
+        }
+    });
+
 });

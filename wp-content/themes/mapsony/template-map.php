@@ -21,13 +21,29 @@ get_header(); ?>
         <!-- Mensaje en español -->
         <h3>Gracias por tu memoria</h3>
         <p>Tu memoria ha sido añadida a la cola de moderación y será publicada en el sitio una vez aprobada. Por favor, vuelve más tarde para ver tu memoria.</p>
+        
+        <hr>
 
         <h4>Únete a la lista de correo</h4>
         <p>Recibe todas las últimas actualizaciones.</p>
 
         <!-- El formulario de Contact Form 7 -->
-        <?php echo do_shortcode('[contact-form-7 id="a382450" title="Memory"]'); ?>
+        <?php echo do_shortcode('[contact-form-7 id="ac75432" title="Memory"]'); ?>
     </div>
 </div>
+
+<!-- Popup de Gracias (inicialmente oculto) -->
+<div id="popup-thank-you" style="display: none;">
+  <div class="popup-content">
+    <span class="close-popup">&times;</span>
+    <h3>¡GRACIAS POR TU SUSCRIPCIÓN!</h3>
+    <p>Tu participación ha sido enviada a la cola de moderación y se añadirá al sitio una vez aprobada. Por favor, vuelve más tarde para encontrar tu publicación.</p>
+    
+    <hr>
+
+    <p>¡Gracias por registrarte!</p>
+  </div>
+</div>
+
 
 <?php get_footer(); ?>
