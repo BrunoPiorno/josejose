@@ -201,7 +201,14 @@ document.addEventListener('DOMContentLoaded', function () {
                                     maxHeight: 400 // Altura máxima del popup
                                 };
 
-                                tempMarker.bindPopup(`
+                                const popup = L.popup({
+                                    className: 'memory-popup',
+                                    closeButton: true,
+                                    closeOnClick: false,
+                                    autoClose: false
+                                })
+                                .setLatLng(e.latlng)
+                                .setContent(`
                                     <div class="memory-form">
                                         <h3>Deja tu recuerdo en ${clickedCountry}</h3>
                                         <input type="text" class="memory-screenname" placeholder="Nombre (así aparecerás en el mapa)">
@@ -214,12 +221,16 @@ document.addEventListener('DOMContentLoaded', function () {
                                             </div>
                                         </div>
                                     </div>
-                                `, {
-                                    closeButton: true,
-                                    closeOnClick: false,
-                                    autoClose: false,
-                                    className: 'memory-popup'
-                                }).openPopup();
+                                `);
+
+                                popup.on('remove', function() {
+                                    if (tempMarker) {
+                                        map.removeLayer(tempMarker);
+                                        tempMarker = null;
+                                    }
+                                });
+
+                                popup.openOn(map);
                             }
                         });
                     }
@@ -277,7 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function loadMemories() {
         try {
-            const response = await fetch('/wp-json/wp/v2/memories?per_page=100');
+            const response = await fetch('/wp-json/wp/v2/memories?per_page=100&status=publish');
             allMemories = await response.json();
             
             allMemories.forEach((memory) => {
@@ -477,16 +488,20 @@ document.addEventListener('DOMContentLoaded', function () {
                 const responseData = await response.json();
 
                 if(response.ok) {
-                    // Agregar la nueva memoria al mapa
-                    addMemoryToMap(responseData);
-                    
-                    // Limpiar el formulario y cerrar el popup
+                    // Cerrar el formulario y limpiar el estado
                     map.closePopup();
-                    tempMarker = null;
+                    // Remover el marcador temporal del mapa
+                    if (tempMarker) {
+                        map.removeLayer(tempMarker);
+                        tempMarker = null;
+                    }
                     addMemoryMode = false;
                     addMemoryBtn.innerHTML = '<i class="fas fa-plus"></i> Add a Memory';
                     addMemoryBtn.classList.remove('active');
                     memoryInstructions.style.display = 'none';
+
+                    // No agregamos la memoria al mapa ya que está en estado 'pending'
+                    console.log('Memoria guardada exitosamente y en espera de aprobación');
                 } else {
                     console.error('Server response:', responseData);
                     throw new Error(responseData.message || 'Error saving memory');

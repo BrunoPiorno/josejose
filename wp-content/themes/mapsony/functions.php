@@ -245,7 +245,26 @@ function register_memory_post_type() {
         'has_archive' => true,
         'rewrite' => array('slug' => 'memories'),
         'show_in_rest' => true,
-        'rest_base' => 'memories'
+        'rest_base' => 'memories',
+        'publicly_queryable' => true,
+        'exclude_from_search' => false,
+        'capability_type' => 'post',
+        'map_meta_cap' => true,
+        'hierarchical' => false,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => true,
+        'show_in_admin_bar' => true,
+        'rest_controller_class' => 'WP_REST_Posts_Controller',
+        'capabilities' => array(
+            'edit_post' => 'edit_post',
+            'read_post' => 'read_post',
+            'delete_post' => 'delete_post',
+            'edit_posts' => 'edit_posts',
+            'edit_others_posts' => 'edit_others_posts',
+            'publish_posts' => 'publish_posts',
+            'read_private_posts' => 'read_private_posts'
+        )
     );
     register_post_type('memory', $args);
 

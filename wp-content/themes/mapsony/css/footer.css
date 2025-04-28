@@ -104,3 +104,24 @@ body {
     }
     #add-memory-btn {bottom: 22%;    padding: 10px 20px; font-size: 14px; }
 }
+
+@media (max-width: 475px) {
+    .footer-container {
+        padding: 0 15px;
+    }
+    .footer-logos {
+        margin: 0 15px;
+        justify-content: center;
+    }   
+    .footer-logo img {
+        height: 30px;
+    }
+
+    #add-memory-btn {
+        bottom: 27%;
+    }
+
+    #memory-instructions p {
+        font-size: 18px;
+    }
+}

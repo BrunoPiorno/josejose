@@ -37,3 +37,22 @@ header.site-header {
     color: #000;
     display: none; 
 }
+
+
+@media (max-width: 475px) {
+
+    .site-header {
+        padding: 0;
+        z-index: 1;
+    }
+	.audio-toggle {
+        top: 20px;
+        left: 10px;
+        font-size: 18px;
+	}
+
+    .map-instruction {
+        top: 90px;
+        font-size: 16px;
+    }
+}
