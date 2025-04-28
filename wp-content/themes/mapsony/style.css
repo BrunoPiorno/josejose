@@ -266,7 +266,7 @@ button:-moz-focusring,
 [type="button"]:-moz-focusring,
 [type="reset"]:-moz-focusring,
 [type="submit"]:-moz-focusring {
-	outline: 1px dotted ButtonText;
+	outline: 1px dotted ButtonText; 
 }
 
 /**
@@ -541,7 +541,7 @@ table {
 /* Links
 --------------------------------------------- */
 a {
-	color: #4169e1;
+	color: #194569;
 }
 
 a:visited {
@@ -561,6 +561,7 @@ a:focus {
 a:hover,
 a:active {
 	outline: 0;
+    text-decoration: underline; 
 }
 
 /* Forms

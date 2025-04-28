@@ -286,7 +286,7 @@ function save_memory_callback($request) {
         'post_title' => sanitize_text_field($params['title']),
         'post_content' => sanitize_textarea_field($params['content']),
         'post_type' => 'memory',
-        'post_status' => 'publish'
+        'post_status' => 'pending'
     ));
     
     if($post_id) {

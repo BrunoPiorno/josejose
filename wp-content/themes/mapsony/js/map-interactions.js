@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                                 tempMarker.bindPopup(`
                                     <div class="memory-form">
-                                        <h3>Deja tu recuerdo en  ${clickedCountry}</h3>
+                                        <h3>Deja tu recuerdo en ${clickedCountry}</h3>
                                         <input type="text" class="memory-screenname" placeholder="Nombre (así aparecerás en el mapa)">
                                         <textarea class="memory-content" placeholder="Escribe tu recuerdo"></textarea>
                                         <div class="memory-footer">
@@ -583,5 +583,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     loadMemories();
-
 });
