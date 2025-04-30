@@ -106,6 +106,7 @@
 .memory-popup   .leaflet-popup-content {
     width: 100% !important;
 }
+
 /* Animaciones */
 @keyframes fadeIn {
 	from { opacity: 0; }
@@ -296,7 +297,61 @@
     color: #194569;
 }
 
+/* Estilos para el overlay del popup */
+#popup-thank-you {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
 
+/* Contenido del popup */
+#popup-thank-you .popup-content {
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+}
+
+/* Botón de cerrar */
+#popup-thank-you .close-popup {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Títulos */
+#popup-thank-you h3 {
+    font-size: 26px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #194569;
+    font-weight: bold;
+}
+
+/* Texto normal */
+#popup-thank-you p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+/* Línea separadora */
+hr {
+    margin: 30px auto;
+    border: none;
+    border-top: 1px solid #ccc;
+    width: 80%;
+}
 
 @media (max-width: 1440px) {
     .modal {
@@ -371,58 +426,8 @@
 }
     
 }
-/* Estilos para el overlay del popup */
-#popup-thank-you {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
 
-/* Contenido del popup */
-#popup-thank-you .popup-content {
-    max-width: 600px;
-    width: 90%;
-    text-align: center;
-}
-
-/* Botón de cerrar */
-#popup-thank-you .close-popup {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    font-size: 28px;
-    cursor: pointer;
-    color: #333;
-}
-
-/* Títulos */
-#popup-thank-you h3 {
-    font-size: 26px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    color: #194569;
-    font-weight: bold;
-}
-
-/* Texto normal */
-#popup-thank-you p {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 20px;
-    line-height: 1.5;
-}
-
-/* Línea separadora */
-hr {
-    margin: 30px auto;
-    border: none;
-    border-top: 1px solid #ccc;
-    width: 80%;
+@media (max-width: 440px) { 
+    .memory-popup .leaflet-popup-content {width: auto !important;}
+    .leaflet-popup-content .memory-form {width: 300px !important; padding: 0 !important;}
 }

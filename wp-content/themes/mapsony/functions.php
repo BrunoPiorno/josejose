@@ -294,37 +294,73 @@ function save_memory_api() {
     register_rest_route('mapsony/v1', '/save-memory/', array(
         'methods' => 'POST',
         'callback' => 'save_memory_callback',
-        'permission_callback' => '__return_true'
+        'permission_callback' => '__return_true',
+        'show_in_index' => true,
+        'args' => array(
+            'title' => array(
+                'required' => true,
+                'type' => 'string'
+            ),
+            'content' => array(
+                'required' => true,
+                'type' => 'string'
+            ),
+            'latitude' => array(
+                'required' => true,
+                'type' => 'string'
+            ),
+            'longitude' => array(
+                'required' => true,
+                'type' => 'string'
+            )
+        )
     ));
 }
 
 function save_memory_callback($request) {
     $params = $request->get_params();
     
+    // Sanitizar los datos de entrada
+    $title = sanitize_text_field($params['title']);
+    $content = sanitize_textarea_field($params['content']);
+    $latitude = sanitize_text_field($params['latitude']);
+    $longitude = sanitize_text_field($params['longitude']);
+    
     $post_id = wp_insert_post(array(
-        'post_title' => sanitize_text_field($params['title']),
-        'post_content' => sanitize_textarea_field($params['content']),
+        'post_title' => $title,
+        'post_content' => $content,
         'post_type' => 'memory',
         'post_status' => 'pending'
     ));
     
-    if($post_id) {
-        update_post_meta($post_id, 'latitude', sanitize_text_field($params['latitude']));
-        update_post_meta($post_id, 'longitude', sanitize_text_field($params['longitude']));
-        
-        // Obtener los datos actualizados para devolverlos
-        $post = get_post($post_id);
-        return array(
-            'id' => $post_id,
-            'title' => array('rendered' => $post->post_title),
-            'content' => array('rendered' => apply_filters('the_content', $post->post_content)),
-            'meta' => array(
-                'latitude' => get_post_meta($post_id, 'latitude', true),
-                'longitude' => get_post_meta($post_id, 'longitude', true)
-            )
-        );
+    if (is_wp_error($post_id)) {
+        return new WP_Error('insert_error', 'Error creating memory', array('status' => 500));
     }
     
-    return new WP_Error('error', 'Error saving memory', array('status' => 500));
+    update_post_meta($post_id, 'latitude', $latitude);
+    update_post_meta($post_id, 'longitude', $longitude);
+    
+    return array(
+        'success' => true,
+        'message' => 'Memory saved successfully',
+        'data' => array(
+            'id' => $post_id,
+            'title' => $title,
+            'content' => $content,
+            'meta' => array(
+                'latitude' => $latitude,
+                'longitude' => $longitude
+            )
+        )
+    );
 }
+
+// Desactivar la verificación de nonce para nuestra ruta específica
+add_filter('rest_authentication_errors', function($result) {
+    if (empty($result) && strpos($_SERVER['REQUEST_URI'], '/wp-json/mapsony/v1/save-memory') !== false) {
+        return true;
+    }
+    return $result;
+});
+
 add_action('rest_api_init', 'save_memory_api');

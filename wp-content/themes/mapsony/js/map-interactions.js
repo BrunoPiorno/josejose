@@ -471,12 +471,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             try {
+                const headers = {
+                    'Content-Type': 'application/json'
+                };
+                
+                // Solo agregar el nonce si existe
+                if (mapsony_vars.nonce) {
+                    headers['X-WP-Nonce'] = mapsony_vars.nonce;
+                }
+
                 const response = await fetch(mapsony_vars.save_memory_url, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-WP-Nonce': mapsony_vars.nonce
-                    },
+                    headers: headers,
                     body: JSON.stringify({
                         title: screenname || 'Anonymous',
                         content: content,
@@ -487,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 const responseData = await response.json();
 
-                if(response.ok) {
+                if(responseData.success) {
                     // Cerrar el formulario y limpiar el estado
                     map.closePopup();
                     // Remover el marcador temporal del mapa
@@ -499,24 +505,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     addMemoryBtn.innerHTML = '<i class="fas fa-plus"></i> Add a Memory';
                     addMemoryBtn.classList.remove('active');
                     memoryInstructions.style.display = 'none';
-
-                    // No agregamos la memoria al mapa ya que está en estado 'pending'
-                    console.log('Memoria guardada exitosamente y en espera de aprobación');
                 } else {
-                    console.error('Server response:', responseData);
                     throw new Error(responseData.message || 'Error saving memory');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                L.popup({
-                    className: 'error-popup',
-                    closeButton: true,
-                    closeOnClick: true,
-                    autoClose: true
-                })
-                .setLatLng(latlng)
-                .setContent(mapsony_vars.popup_message)
-                .openOn(map);
+                alert('Lo sentimos, hubo un error al guardar tu recuerdo. Por favor, intenta de nuevo.');
             }
         }
 
