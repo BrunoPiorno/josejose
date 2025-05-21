@@ -84,6 +84,116 @@ body {
 	background: #E2E6E7;
 }
 
+body.single,
+body.page {
+	overflow-y: auto;
+}
+
+body.privacy-policy .site-footer, body.terminos-y-condiciones .site-footer {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 40%, rgba(0, 0, 0, 0) 100%);
+}
+/* Estilos para páginas singulares */
+.site-main {
+	max-width: 1200px;
+	margin: 120px auto 80px;
+	position: relative;
+	z-index: 1;
+}
+
+.entry-header {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.entry-title {
+	color: red;
+	font-size: 2.5em;
+	margin-bottom: 20px;
+}
+
+.entry-content {
+	line-height: 1.8;
+	color: #333;
+	font-size: 1.1em;
+}
+
+.entry-content p {
+	margin-bottom: 1.5em;
+}
+
+.entry-content h2,
+.entry-content h3,
+.entry-content h4 {
+	color: red;
+	margin: 1.5em 0 1em;
+}
+
+.entry-content ul,
+.entry-content ol {
+	margin-bottom: 1.5em;
+	padding-left: 2em;
+}
+
+.entry-content img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 2em auto;
+}
+
+.post-navigation {
+	margin: 3em 0;
+	padding: 2em 0;
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+}
+
+.nav-links {
+	display: flex;
+	justify-content: space-between;
+}
+
+.nav-previous,
+.nav-next {
+	max-width: 45%;
+}
+
+.nav-subtitle {
+	display: block;
+	font-size: 0.9em;
+	color: #666;
+	margin-bottom: 0.5em;
+}
+
+.nav-title {
+	color: #194569;
+	font-weight: 500;
+}
+
+@media (max-width: 768px) {
+	.site-main {
+		padding: 20px;
+	}
+
+	.entry-title {
+		font-size: 2em;
+	}
+
+	.entry-content {
+		font-size: 1em;
+	}
+
+	.nav-links {
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.nav-previous,
+	.nav-next {
+		max-width: 100%;
+	}
+}
+
 /**
  * Render the `main` element consistently in IE.
  */
@@ -1036,6 +1146,17 @@ textarea {
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
+}
+
+#memory.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 #memory-form {

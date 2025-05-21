@@ -23,6 +23,7 @@
 	<?php wp_head(); ?>
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
+<body <?php body_class( get_post_field( 'post_name', get_post() ) ); ?>>
 <?php
 $logo = get_field('header_logo', 'option');
 $audio = get_field('background_music', 'option');

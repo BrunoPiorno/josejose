@@ -1,4 +1,10 @@
-<?php $popup_title = get_field('popup_title', 'option');
+<?php
+// Skip popup on privacy policy and terms & conditions pages
+if (is_page(['privacy-policy', 'terminos-y-condiciones'])) {
+    return;
+}
+
+$popup_title = get_field('popup_title', 'option');
 $popup_subtitle = get_field('popup_subtitle', 'option');
 $popup_description = get_field('popup_description', 'option');
 $popup_button = get_field('popup_button_text', 'option');
