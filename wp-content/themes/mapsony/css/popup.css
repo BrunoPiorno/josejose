@@ -217,8 +217,20 @@
     margin-top: 20px;
 }
 
+.flex-row {
+    display: flex;
+    gap: 20px; 
+}
+
+@media (max-width: 600px) {
+    .flex-row {
+        display: block;
+    }
+}
+
 #popup-memory-form .popup-content input[type="text"],
 #popup-memory-form .popup-content input[type="email"],
+#popup-memory-form .popup-content input[type="tel"],
 .popup-content select,
 .popup-content textarea {
     width: 100%;

@@ -25,7 +25,7 @@ get_header(); ?>
         <hr>
 
         <h4>Únete a la lista de correo</h4>
-        <p>Recibe todas las últimas actualizaciones.</p>
+        <p>Sí quieres recibir información exclusiva de José José, inscríbete aquí.</p>
 
         <!-- El formulario de Contact Form 7 -->
         <?php echo do_shortcode('[contact-form-7 id="ac75432" title="Memory"]'); ?>
