@@ -442,4 +442,34 @@ hr {
 @media (max-width: 440px) { 
     .memory-popup .leaflet-popup-content {width: auto !important;}
     .leaflet-popup-content .memory-form {width: 300px !important; padding: 0 !important;}
+    hr {margin: 10px auto;}
+    .popup-content {padding:  10px;}
+    #popup-memory-form .popup-content h4 {margin: 10px 0 0 0;}
+    #popup-memory-form .popup-content form {margin-top: 10px;}   
+    #popup-memory-form .popup-content input[type="text"],
+    #popup-memory-form .popup-content input[type="email"],
+    #popup-memory-form .popup-content input[type="tel"],
+    .popup-content select,
+    .popup-content textarea {
+        height: 40px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 375px) {
+    #popup-memory-form .popup-content h4 {font-size: 18px;}
+    #popup-memory-form .popup-content p {margin-top: 10px;}
+    hr {display: none;}
+    #popup-memory-form .popup-content h3 {font-size: 18px;}
+    .flex-row {display: flex; gap: 10px;}
+    #popup-memory-form .popup-content input[type="text"],
+    #popup-memory-form .popup-content input[type="email"],
+    #popup-memory-form .popup-content input[type="tel"],
+    .popup-content select,
+    .popup-content textarea {
+        height: 35px;
+        padding: 6px;
+        font-size: 14px;
+    }
+    .wpcf7-spinner {display: none;}
 }
