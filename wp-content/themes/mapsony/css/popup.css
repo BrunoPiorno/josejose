@@ -473,3 +473,10 @@ hr {
     }
     .wpcf7-spinner {display: none;}
 }
+
+.disabled-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  

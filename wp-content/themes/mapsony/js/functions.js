@@ -81,4 +81,46 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const form = document.querySelector('.wpcf7 form');
+    const submitBtn = form.querySelector('input[type="submit"]');
+
+    // Función para validar todos los campos obligatorios
+    function validateForm() {
+      let isValid = true;
+
+      // Lista de IDs de campos obligatorios
+      const requiredFields = [
+        'full-name',
+        'your-email',
+        'phone',
+        'city',
+        'your-country',
+      ];
+
+      requiredFields.forEach(id => {
+        const field = form.querySelector('#' + id);
+        if (!field || !field.value.trim()) {
+          isValid = false;
+        } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
+          isValid = false;
+        }
+      });
+
+      // Validar checkbox
+      const checkbox = form.querySelector('input[name="privacy-accept[]"]');
+      if (!checkbox || !checkbox.checked) {
+        isValid = false;
+      }
+
+      // Activar/desactivar el botón
+      submitBtn.disabled = !isValid;
+    }
+
+    // Escuchar cambios en los campos
+    form.addEventListener('input', validateForm);
+    form.addEventListener('change', validateForm);
+
+    // Desactivar botón al cargar la página
+    submitBtn.disabled = true;
+
 });
